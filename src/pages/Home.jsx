@@ -43,7 +43,7 @@ export default function Home() {
    return (
       <section className="relative w-full h-screen">
          <div className="absolute left-0 right-0 z-10 flex items-center justify-center top-28">
-            {currentStage && <HomeInfo currentStage={currentStage} />}
+            {currentStage ? <HomeInfo currentStage={currentStage} /> : null}
          </div>
 
          <Canvas
