@@ -9,4 +9,5 @@ Building a 3D scene with Three.js
 -  [x] three (https://threejs.org/docs/index.html#manual/en/introduction/Installation) - npm install three
 -  [x] @types/three (https://www.npmjs.com/package/@types/three) - npm install @types/three
 -  [x] @react-three/drei (https://docs.pmnd.rs/drei/introduction) - npm install @react-three/drei
--  [ ] @react-spring/three (https://docs.pmnd.rs/react-spring/v9) - npm install @react-spring/three
+-  [x] @react-spring/three (https://docs.pmnd.rs/react-spring/v9) - npm install @react-spring/three
+-  [x] @emailjs/browser (https://www.emailjs.com/docs/tutorial/overview/) - npm install @emailjs/browser
