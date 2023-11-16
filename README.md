@@ -11,3 +11,4 @@ Building a 3D scene with Three.js
 -  [x] @react-three/drei (https://docs.pmnd.rs/drei/introduction) - npm install @react-three/drei
 -  [x] @react-spring/three (https://docs.pmnd.rs/react-spring/v9) - npm install @react-spring/three
 -  [x] @emailjs/browser (https://www.emailjs.com/docs/tutorial/overview/) - npm install @emailjs/browser
+-  [ ] react-vertical-timeline-component (https://www.npmjs.com/package/react-vertical-timeline-component) - npm install react-vertical-timeline-component
