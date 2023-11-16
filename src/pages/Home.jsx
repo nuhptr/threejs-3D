@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber"
-import { Suspense, useState } from "react"
+import { Suspense, useState, useEffect, useRef } from "react"
 
 import { HomeInfo, Loader } from "../components"
 
@@ -8,7 +8,26 @@ import Sky from "../models/Sky"
 import Bird from "../models/Bird"
 import Plane from "../models/Plane"
 
+import sakura from "../assets/sakura.mp3"
+import { soundoff, soundon } from "../assets/icons"
+
 export default function Home() {
+   const audioRef = useRef(new Audio(sakura))
+   audioRef.current.volume = 0.4
+   audioRef.current.loop = true
+
+   const [isPlayingMusic, setIsPlayingMusic] = useState(false)
+   const [isRotating, setIsRotating] = useState(false)
+   const [currentStage, setCurrentStage] = useState(1)
+
+   useEffect(() => {
+      if (isPlayingMusic) audioRef.current.play()
+
+      return () => {
+         audioRef.current.pause()
+      }
+   }, [isPlayingMusic])
+
    function adjustIslandForScreenSize() {
       let screenScale = null
       let screenPosition = [0, -6.5, -43]
@@ -27,15 +46,12 @@ export default function Home() {
          screenScale = [1.5, 1.5, 1.5]
          screenPosition = [0, -1.5, 0]
       } else {
-         screenScale = [1, 1, 1]
+         screenScale = [3, 3, 3]
          screenPosition = [0, -4, -4]
       }
 
       return [screenScale, screenPosition]
    }
-
-   const [isRotating, setIsRotating] = useState(false)
-   const [currentStage, setCurrentStage] = useState(1)
 
    const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize()
    const [planeScale, planePosition] = adjustPlaneForScreenSize()
@@ -64,14 +80,18 @@ export default function Home() {
                   setIsRotating={setIsRotating}
                   setCurrentStage={setCurrentStage}
                />
-               <Plane
-                  rotation={[0, 20, 0]}
-                  planePosition={planePosition}
-                  planeScale={planeScale}
-                  isRotating={isRotating}
-               />
+               <Plane rotation={[0, 14, 0]} position={planePosition} scale={planeScale} isRotating={isRotating} />
             </Suspense>
          </Canvas>
+
+         <div className="absolute bottom-2 right-2">
+            <img
+               src={!isPlayingMusic ? soundoff : soundon}
+               alt="sound icon"
+               className="object-contain w-10 h-10 cursor-pointer"
+               onClick={() => setIsPlayingMusic(!isPlayingMusic)}
+            />
+         </div>
       </section>
    )
 }
