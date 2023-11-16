@@ -16,7 +16,7 @@ export default function Home() {
    audioRef.current.volume = 0.4
    audioRef.current.loop = true
 
-   const [isPlayingMusic, setIsPlayingMusic] = useState(false)
+   const [isPlayingMusic, setIsPlayingMusic] = useState(true)
    const [isRotating, setIsRotating] = useState(false)
    const [currentStage, setCurrentStage] = useState(1)
 
@@ -86,7 +86,7 @@ export default function Home() {
 
          <div className="absolute bottom-2 right-2">
             <img
-               src={!isPlayingMusic ? soundoff : soundon}
+               src={isPlayingMusic ? soundoff : soundon}
                alt="sound icon"
                className="object-contain w-10 h-10 cursor-pointer"
                onClick={() => setIsPlayingMusic(!isPlayingMusic)}
