@@ -5,14 +5,6 @@ import { skills, experiences } from "../constants"
 
 import { CallToAction } from "../components"
 
-const timelineIcon = ({ icon, company_name }) => {
-   return (
-      <div className="flex items-center justify-center w-full h-full">
-         <img src={icon} alt={company_name} className="w-[60%] h-[60%] object-contain" />
-      </div>
-   )
-}
-
 const About = () => {
    return (
       <section className="max-container">
@@ -60,7 +52,15 @@ const About = () => {
                      <VerticalTimelineElement
                         key={experience.title}
                         date={experience.date}
-                        icon={timelineIcon(experience.icon, experience.company_name)}
+                        icon={
+                           <div className="flex items-center justify-center w-full h-full">
+                              <img
+                                 src={experience.icon}
+                                 alt={experience.company_name}
+                                 className="w-[60%] h-[60%] object-contain"
+                              />
+                           </div>
+                        }
                         iconStyle={{ background: experience.iconBg }}
                         contentStyle={{
                            borderBottom: "8px",
