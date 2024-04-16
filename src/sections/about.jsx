@@ -40,14 +40,14 @@ const About = () => {
          <div className="py-16">
             <h3 className="subhead-text">Work Experience</h3>
             <div className="flex flex-col gap-3 mt-5 text-slate-500">
-               <p className="">
+               <p>
                   I've worked with all sorts of companies, leveling up my skills and teaming up with
                   smart people. Here's the rundown:
                </p>
             </div>
 
             <div className="flex mt-12">
-               <VerticalTimeline className="">
+               <VerticalTimeline>
                   {experiences.map((experience) => (
                      <VerticalTimelineElement
                         key={experience.title}
@@ -68,7 +68,7 @@ const About = () => {
                            borderBottomColor: experience.iconBg,
                            boxShadow: "none",
                         }}>
-                        <div className="">
+                        <div>
                            <h3 className="text-xl font-semibold text-black font-poppins">
                               {experience.title}
                            </h3>
