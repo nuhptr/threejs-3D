@@ -3,7 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import { Navbar } from "./components"
 import { Home, About, Projects, Contact } from "./pages"
 
-export default function App() {
+const App = () => {
    return (
       <main className="bg-slate-300/20 h-[100vh]">
          <Router>
@@ -18,3 +18,5 @@ export default function App() {
       </main>
    )
 }
+
+export default App
