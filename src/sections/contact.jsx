@@ -1,19 +1,18 @@
-import React, { Suspense, useRef, useState } from "react"
-import emailjs from "@emailjs/browser"
+import { Suspense, useState } from "react"
 import { Canvas } from "@react-three/fiber"
+import emailjs from "@emailjs/browser"
 
-import useAlert from "../hooks/useAlert"
-import Fox from "../models/Fox"
+import { useAlert } from "../hooks/use-alert"
+import Fox from "../models/foxs"
 
 import { Alert, Loader } from "../components"
 
-export default function Contact() {
-   const formRef = useRef(null)
+const Contact = () => {
    const [form, setForm] = useState({ name: "", email: "", message: "" })
    const [isLoading, setIsLoading] = useState(false)
    const [currentAnimation, setCurrentAnimation] = useState("Idle")
 
-   const { alert, showAlert, hideAlert } = useAlert()
+   const { alert, showAlert } = useAlert()
 
    function handleChange(event) {
       setForm({ ...form, [event.target.name]: event.target.value })
@@ -24,8 +23,8 @@ export default function Contact() {
       setIsLoading(true)
       setCurrentAnimation("run")
 
-      emailjs
-         .send(
+      try {
+         emailjs.send(
             import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
             import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
             {
@@ -37,23 +36,22 @@ export default function Contact() {
             },
             import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
          )
-         .then(() => {
-            setIsLoading(false)
-            // TODO: Show success message
-            showAlert({ show: true, text: "Message sent successfully!", type: "success" })
 
-            setTimeout(() => {
-               setCurrentAnimation("idle")
-               setForm({ name: "", email: "", message: "" })
-            }, 300)
-         })
-         .catch((error) => {
-            setIsLoading(false)
+         setIsLoading(false)
+         // TODO: Show success message
+         showAlert({ show: true, text: "Message sent successfully!", type: "success" })
+
+         setTimeout(() => {
             setCurrentAnimation("idle")
-            console.log(error)
-            // TODO: show error message
-            showAlert({ show: true, text: "I didn't receive your message", type: "danger" })
-         })
+            setForm({ name: "", email: "", message: "" })
+         }, 300)
+      } catch (error) {
+         setIsLoading(false)
+         setCurrentAnimation("idle")
+         console.log(error)
+         // TODO: show error message
+         showAlert({ show: true, text: "I didn't receive your message", type: "danger" })
+      }
    }
 
    function handleFocus() {
@@ -114,7 +112,12 @@ export default function Contact() {
                      onBlur={handleBlur}
                   />
                </label>
-               <button type="submit" className="btn" onFocus={handleFocus} onBlur={handleBlur} disabled={isLoading}>
+               <button
+                  type="submit"
+                  className="btn"
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  disabled={isLoading}>
                   {isLoading ? "Sending..." : "Send Message"}
                </button>
             </form>
@@ -123,8 +126,11 @@ export default function Contact() {
          <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]">
             <Canvas camera={{ position: [0, 0, 5], fov: 75, near: 0.1, far: 1000 }}>
                <directionalLight position={[0, 0, 1]} intensity={2.5} />
+
                <ambientLight intensity={1} />
+
                <pointLight position={[5, 10, 0]} intensity={2} />
+
                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} />
 
                <Suspense fallback={<Loader />}>
@@ -140,3 +146,5 @@ export default function Contact() {
       </section>
    )
 }
+
+export default Contact

@@ -9,14 +9,16 @@
  * YOU DON'T HAVE TO WRITE EVERYTHING FROM SCRATCH
  */
 
-import React, { useRef, useEffect } from "react"
+import { useRef, useEffect } from "react"
 import { useGLTF, useAnimations } from "@react-three/drei"
 
-import foxScene from "../assets/3d/fox.glb"
+import foxScene from "../assets/three/fox.glb"
 
-export default function Fox({ currentAnimation, ...props }) {
+const Fox = ({ currentAnimation, ...props }) => {
    const group = useRef()
+
    const { nodes, materials, animations } = useGLTF(foxScene)
+
    const { actions } = useAnimations(animations, group)
 
    // This effect will run whenever the currentAnimation prop changes
@@ -66,3 +68,5 @@ export default function Fox({ currentAnimation, ...props }) {
 }
 
 useGLTF.preload(foxScene)
+
+export default Fox

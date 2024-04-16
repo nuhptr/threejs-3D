@@ -1,6 +1,6 @@
 import { Html } from "@react-three/drei"
 
-export default function Loader() {
+const Loader = () => {
    return (
       <Html>
          <div className="flex items-center justify-center">
@@ -9,3 +9,5 @@ export default function Loader() {
       </Html>
    )
 }
+
+export default Loader

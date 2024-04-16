@@ -1,11 +1,11 @@
-import React from "react"
 import { Link } from "react-router-dom"
 
-import { CallToAction } from "../components"
 import { projects } from "../constants"
 import { arrow } from "../assets/icons"
 
-export default function Projects() {
+import { CallToAction } from "../components"
+
+const Projects = () => {
    return (
       <section className="max-container">
          <h1 className="head-text">
@@ -13,10 +13,10 @@ export default function Projects() {
          </h1>
 
          <p className="mt-2 leading-relaxed text-slate-500">
-            I've embarked on numerous projects throughout the years, but these are the ones I hold closest to my heart.
-            Many of them are open-source, so if you come across something that piques your interest, feel free to
-            explore the codebase and contribute your ideas for further enhancements. Your collaboration is highly
-            valued!
+            I've embarked on numerous projects throughout the years, but these are the ones I hold
+            closest to my heart. Many of them are open-source, so if you come across something that
+            piques your interest, feel free to explore the codebase and contribute your ideas for
+            further enhancements. Your collaboration is highly valued!
          </p>
 
          <div className="flex flex-wrap gap-16 my-20">
@@ -25,7 +25,11 @@ export default function Projects() {
                   <div className="w-12 h-12 block-container">
                      <div className={`btn-back rounded-xl ${project.theme}`} />
                      <div className="flex items-center justify-center btn-front rounded-xl">
-                        <img src={project.iconUrl} alt="threads" className="object-contain w-1/2 h-1/2" />
+                        <img
+                           src={project.iconUrl}
+                           alt="threads"
+                           className="object-contain w-1/2 h-1/2"
+                        />
                      </div>
                   </div>
 
@@ -53,3 +57,5 @@ export default function Projects() {
       </section>
    )
 }
+
+export default Projects

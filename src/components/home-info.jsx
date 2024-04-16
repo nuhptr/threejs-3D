@@ -14,7 +14,8 @@ const InfoBox = ({ text, link, btnText }) => (
 const renderContent = {
    1: (
       <h1 className="px-8 py-4 mx-5 text-center text-white neo-brutalism-blue sm:text-xl sm:leading-snug">
-         Hi, I am <span className="font-semibold">Adi</span> 👋 <br /> A Software Engineer based in Indonesia
+         Hi, I am <span className="font-semibold">Adi</span> 👋 <br /> A Software Engineer based in
+         Indonesia
       </h1>
    ),
    2: (
@@ -40,6 +41,8 @@ const renderContent = {
    ),
 }
 
-export default function HomeInfo({ currentStage }) {
+const HomeInfo = ({ currentStage }) => {
    return renderContent[currentStage] || null
 }
+
+export default HomeInfo

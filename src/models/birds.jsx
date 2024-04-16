@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react"
 import { useFrame } from "@react-three/fiber"
 import { useAnimations, useGLTF } from "@react-three/drei"
 
-import birdScene from "../assets/3d/bird.glb"
+import birdScene from "../assets/three/bird.glb"
 
-export default function Bird() {
+const Bird = () => {
    const birdRef = useRef()
 
    // Load the 3D model and animations from the provided GLTF file
@@ -52,3 +52,5 @@ export default function Bird() {
       </mesh>
    )
 }
+
+export default Bird

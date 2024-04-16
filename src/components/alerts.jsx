@@ -1,4 +1,4 @@
-export default function Alert({ type, text }) {
+const Alert = ({ type, text }) => {
    return (
       <div className="absolute left-0 right-0 flex items-center justify-center top-10">
          <div
@@ -15,3 +15,5 @@ export default function Alert({ type, text }) {
       </div>
    )
 }
+
+export default Alert

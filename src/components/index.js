@@ -1,7 +1,7 @@
-import Navbar from "./Navbar"
-import Loader from "./Loader"
-import HomeInfo from "./HomeInfo"
-import Alert from "./Alert"
-import CallToAction from "./CallToAction"
+import Navbar from "./navbars"
+import Loader from "./loaders"
+import HomeInfo from "./home-info"
+import Alert from "./alerts"
+import CallToAction from "./call-to-action"
 
 export { Navbar, Loader, HomeInfo, Alert, CallToAction }
