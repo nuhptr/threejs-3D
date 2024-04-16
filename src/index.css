@@ -9,6 +9,11 @@
    --green-rgb: 125 161 35;
 }
 
+.vertical-timeline::before {
+   background-color: #e4e7e4 !important;
+   opacity: 0.4;
+}
+
 body {
    font-family: "Work Sans", sans-serif;
 }
